@@ -377,7 +377,8 @@ function visualBlock(itemStep) {
 function visualContent(itemStep) {
   const command = escapeHtml(itemStep.command || itemStep.title);
   if (itemStep.visual === "browser") {
-    return `<div class="address">${officialUrl(itemStep.command)}</div><div class="primary-button">${command}</div><div class="hint-arrow">点击这里</div>`;
+    const url = officialUrl(itemStep.command);
+    return `<a class="address" href="${url}" target="_blank" rel="noreferrer">${url}</a><a class="primary-button" href="${url}" target="_blank" rel="noreferrer">${command}</a><a class="hint-arrow" href="${url}" target="_blank" rel="noreferrer">点击这里打开官网</a>`;
   }
   if (itemStep.visual === "installer") {
     return `<div class="checkline">安装选项</div><div class="checkline muted">安装路径</div><div class="primary-button">${command}</div>`;
@@ -434,7 +435,7 @@ function officialUrl(label = "") {
   if (value.includes("jupyter")) return "https://jupyter.org/install";
   if (value.includes("openvino")) return "https://docs.openvino.ai/";
   if (value.includes("ultralytics") || value.includes("yolo")) return "https://docs.ultralytics.com/quickstart/";
-  return "请从下方“官方下载入口”进入官网";
+  return "#downloads";
 }
 
 function escapeHtml(value) {

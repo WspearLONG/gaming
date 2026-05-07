@@ -799,6 +799,17 @@ code {
   font-weight: 900;
 }
 
+a.address,
+a.primary-button,
+a.hint-arrow {
+  cursor: pointer;
+}
+
+a.address:hover,
+a.hint-arrow:hover {
+  text-decoration: underline;
+}
+
 .muted {
   color: var(--muted);
 }
