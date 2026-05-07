@@ -373,6 +373,7 @@ function renderChoices() {
     .map((item) => `
       <article class="choice-card">
         <h3>${item.name}</h3>
+        ${choiceShot(item)}
         <div>
           <h4>点开后选什么</h4>
           <ul>${item.choose.map((line) => `<li>${line}</li>`).join("")}</ul>
@@ -388,6 +389,104 @@ function renderChoices() {
       </article>
     `)
     .join("");
+}
+
+function choiceShot(item) {
+  const name = item.name;
+  if (name.includes("Python 官方")) {
+    return installShot("Python.org Downloads", [
+      ["Download Python 3.x", "primary"],
+      ["Windows installer (64-bit)", "selected"],
+      ["Add python.exe to PATH", "checked"],
+    ]);
+  }
+  if (name.includes("Anaconda")) {
+    return installShot("Anaconda Windows Installer", [
+      ["Windows 64-Bit Graphical Installer", "selected"],
+      ["Just Me", "checked"],
+      ["Add Anaconda to PATH", "blocked"],
+      ["Register as default Python", "optional"],
+    ]);
+  }
+  if (name.includes("Miniconda")) {
+    return installShot("Miniconda Windows Installer", [
+      ["Miniconda3 Windows 64-bit", "selected"],
+      ["Just Me", "checked"],
+      ["Add Miniconda to PATH", "blocked"],
+      ["Register Python", "optional"],
+    ]);
+  }
+  if (name.includes("VS Code")) {
+    return installShot("VS Code Setup + Extensions", [
+      ["User Installer x64", "selected"],
+      ["Add to PATH", "checked"],
+      ["Python Extension by Microsoft", "primary"],
+      ["Python: Select Interpreter", "selected"],
+    ]);
+  }
+  if (name.includes("PyCharm")) {
+    return installShot("PyCharm Interpreter", [
+      ["Community Edition", "selected"],
+      ["Add Interpreter", "primary"],
+      ["Conda Environment", "selected"],
+      ["Existing environment", "checked"],
+    ]);
+  }
+  if (name.includes("Jupyter")) {
+    return installShot("Jupyter Notebook", [
+      ["conda install notebook ipykernel", "primary"],
+      ["Register Kernel", "checked"],
+      ["New -> Python (py310)", "selected"],
+    ]);
+  }
+  if (name.includes("PyTorch")) {
+    return installShot("PyTorch Get Started Selector", [
+      ["Stable", "selected"],
+      ["Windows", "selected"],
+      ["Pip", "selected"],
+      ["Python", "selected"],
+      ["CUDA / CPU 按显卡选择", "primary"],
+    ]);
+  }
+  if (name.includes("TensorFlow")) {
+    return installShot("TensorFlow Install", [
+      ["Windows CPU: pip install tensorflow", "selected"],
+      ["Windows GPU: WSL2 route", "primary"],
+      ["Native Windows GPU >2.10", "blocked"],
+    ]);
+  }
+  if (name.includes("CUDA")) {
+    return installShot("NVIDIA CUDA Downloads", [
+      ["先安装显卡驱动", "primary"],
+      ["Windows -> x86_64", "selected"],
+      ["exe local", "selected"],
+      ["默认安装", "checked"],
+    ]);
+  }
+  if (name.includes("Ultralytics")) {
+    return installShot("Ultralytics Quickstart", [
+      ["conda create -n yolo python=3.10", "primary"],
+      ["pip install ultralytics", "selected"],
+      ["yolo checks", "checked"],
+      ["coco8 先跑通", "selected"],
+    ]);
+  }
+  return installShot("Deployment Toolchain", [
+    ["ONNX Runtime: 通用", "selected"],
+    ["TensorRT: NVIDIA GPU", "primary"],
+    ["OpenVINO: Intel 硬件", "selected"],
+  ]);
+}
+
+function installShot(title, rows) {
+  return `
+    <figure class="choice-shot">
+      <figcaption>${title}</figcaption>
+      <div class="choice-window">
+        ${rows.map(([text, type]) => `<div class="choice-row ${type}"><span></span><b>${text}</b></div>`).join("")}
+      </div>
+    </figure>
+  `;
 }
 
 function renderTroubles(active = 0) {

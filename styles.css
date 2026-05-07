@@ -493,6 +493,95 @@ code {
   font-size: 24px;
 }
 
+.choice-shot {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--surface-2) 58%, var(--surface));
+}
+
+.choice-shot figcaption {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.choice-window {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+}
+
+.choice-row {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 10px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  background: var(--surface);
+}
+
+.choice-row span {
+  display: grid;
+  width: 22px;
+  height: 22px;
+  place-items: center;
+  border: 2px solid var(--line);
+  border-radius: 6px;
+}
+
+.choice-row.checked span::after,
+.choice-row.selected span::after,
+.choice-row.primary span::after {
+  content: "✓";
+  color: #fff;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.choice-row.checked span,
+.choice-row.selected span,
+.choice-row.primary span {
+  border-color: var(--primary);
+  background: var(--primary);
+}
+
+.choice-row.primary {
+  border-color: var(--primary);
+  box-shadow: inset 4px 0 0 var(--primary);
+}
+
+.choice-row.blocked span {
+  border-color: #dc2626;
+  background: color-mix(in srgb, #dc2626 12%, var(--surface));
+}
+
+.choice-row.blocked span::after {
+  content: "×";
+  color: #dc2626;
+  font-weight: 900;
+}
+
+.choice-row.blocked b {
+  color: #b91c1c;
+}
+
+.choice-row.optional span {
+  border-color: var(--warning);
+  background: color-mix(in srgb, var(--warning) 12%, var(--surface));
+}
+
+.choice-row.optional span::after {
+  content: "?";
+  color: var(--warning);
+  font-weight: 900;
+}
+
 .choice-card h4 {
   margin: 0 0 8px;
   color: var(--primary);
