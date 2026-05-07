@@ -277,7 +277,8 @@ h1 {
 }
 
 .start,
-.downloads {
+.downloads,
+.choices {
   background: var(--surface-2);
 }
 
@@ -309,7 +310,8 @@ h1 {
 
 .visual-grid,
 .tutorial-grid,
-.download-grid {
+.download-grid,
+.choice-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
@@ -318,6 +320,7 @@ h1 {
 .visual-grid article,
 .tutorial-card,
 .download-card,
+.choice-card,
 .trouble-panel {
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -473,6 +476,35 @@ code {
   color: var(--primary-2);
   font-style: normal;
   font-weight: 900;
+}
+
+.choice-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.choice-card {
+  display: grid;
+  gap: 18px;
+  padding: 22px;
+}
+
+.choice-card h3 {
+  margin-bottom: 0;
+  font-size: 24px;
+}
+
+.choice-card h4 {
+  margin: 0 0 8px;
+  color: var(--primary);
+  font-size: 15px;
+}
+
+.choice-card ul {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
 }
 
 .trouble-layout {
@@ -842,6 +874,7 @@ a.hint-arrow:hover {
   .visual-grid,
   .tutorial-grid,
   .download-grid,
+  .choice-grid,
   .trouble-layout,
   .step-card {
     grid-template-columns: 1fr;

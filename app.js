@@ -194,6 +194,75 @@ const downloads = [
   ["OpenVINO", "https://docs.openvino.ai/", "Intel OpenVINO 文档"],
 ];
 
+const installChoices = [
+  {
+    name: "Python 官方安装器",
+    choose: ["Windows 选 Download Python 3.x 的 64-bit installer。", "做机器学习项目时，优先用 Python 3.10 或 3.11，兼容性通常比最新小版本更稳。", "如果你已经决定全程用 Anaconda / Miniconda，可以不单独装系统 Python。"],
+    install: ["安装器第一页：如果你要用系统 Python，就勾选 Add python.exe to PATH。", "点击 Install Now，新手不要点 Customize installation。", "安装结束如果出现 Disable path length limit，可以点击它，减少 Windows 路径长度问题。"],
+    verify: "PowerShell 输入 python --version 和 pip --version。",
+  },
+  {
+    name: "Anaconda Distribution",
+    choose: ["官网点 Download，Windows 选择 64-bit Graphical Installer。", "新手、课程学习、数据分析可以选 Anaconda，因为自带包多。", "如果硬盘空间紧张或想保持环境干净，改用 Miniconda。"],
+    install: ["安装器选择 Just Me。", "安装路径不要有中文、空格和特殊符号。", "Advanced Options：不要勾 Add Anaconda to PATH。", "Register Anaconda as default Python：如果你没有其他 Python 可以勾；已有系统 Python 时建议不勾。"],
+    verify: "打开 Anaconda Prompt，输入 conda --version。",
+  },
+  {
+    name: "Miniconda",
+    choose: ["进入 Miniconda 文档页，选择 Windows 64-bit installer。", "推荐给想做深度学习、YOLO、部署的人，环境更轻，冲突更少。", "Python 版本不用在安装器里纠结，后面 conda create 时指定。"],
+    install: ["选择 Just Me。", "安装路径建议 C:\\Users\\用户名\\miniconda3。", "不要勾 Add Miniconda to PATH。", "安装完只用 Anaconda Prompt 或 Miniconda Prompt 操作。"],
+    verify: "conda create -n py310 python=3.10，然后 conda activate py310。",
+  },
+  {
+    name: "VS Code",
+    choose: ["官网点 Download for Windows，普通用户选 User Installer x64。", "装完打开扩展面板，搜索 Python，安装 Microsoft 发布的 Python 扩展。", "还可以安装 Jupyter 扩展，用于 .ipynb 文件。"],
+    install: ["安装器 Additional Tasks 可以勾 Add to PATH。", "可以勾 Open with Code 的右键菜单，方便打开项目文件夹。", "进入项目后按 Ctrl+Shift+P，选择 Python: Select Interpreter。"],
+    verify: "VS Code 终端运行 python -c \"import sys; print(sys.executable)\"。",
+  },
+  {
+    name: "PyCharm",
+    choose: ["只写 Python 脚本和普通项目，选 Community 免费版即可。", "需要 Web、数据库、远程开发、专业 Notebook 功能，再考虑 Professional。", "Windows 选择 64-bit 安装器。"],
+    install: ["安装器可以勾 Create Desktop Shortcut。", "Add launchers dir to PATH 可选，不影响解释器配置。", "打开项目后进入 Settings -> Project -> Python Interpreter。", "选择 Add Interpreter -> Conda Environment -> Existing environment。"],
+    verify: "PyCharm Terminal 里运行 python --version，确认和右下角解释器一致。",
+  },
+  {
+    name: "Jupyter Notebook",
+    choose: ["Jupyter 通常不需要下载安装器，而是在 conda 环境里安装。", "每个项目环境都可以注册自己的 Jupyter Kernel。", "建议先安装 notebook 和 ipykernel。"],
+    install: ["conda activate py310。", "conda install notebook ipykernel。", "python -m ipykernel install --user --name py310 --display-name \"Python (py310)\"。", "jupyter notebook 启动后点 New -> Python (py310)。"],
+    verify: "Notebook 单元格运行 import sys; print(sys.executable)。",
+  },
+  {
+    name: "PyTorch",
+    choose: ["官网 Get Started 页面选择 Stable。", "OS 选 Windows；Package 选 Pip 或 Conda；Language 选 Python。", "有 NVIDIA 显卡并且驱动正常，再选 CUDA；没有 NVIDIA 显卡选 CPU。", "CUDA 版本优先选择官网当前推荐项，不要照搬旧教程。"],
+    install: ["先创建独立环境，例如 conda create -n torch python=3.10。", "复制官网生成的安装命令到已激活环境里执行。", "不要同时混装多个 CUDA 版本的 torch。"],
+    verify: "python -c \"import torch; print(torch.cuda.is_available(), torch.version.cuda)\"。",
+  },
+  {
+    name: "TensorFlow",
+    choose: ["新手先装 CPU 版跑通。", "Windows 原生 GPU 支持受版本限制，复杂 GPU 场景优先看官方 WSL2 路线。", "如果只是学习 Keras / 基础深度学习，CPU 足够开始。"],
+    install: ["conda create -n tf python=3.10。", "conda activate tf。", "pip install tensorflow。", "不要在同一环境里混装太多深度学习框架。"],
+    verify: "python -c \"import tensorflow as tf; print(tf.__version__)\"。",
+  },
+  {
+    name: "CUDA Toolkit / cuDNN / 驱动",
+    choose: ["第一步先装 NVIDIA 显卡驱动，不是先装 CUDA。", "如果只用 PyTorch pip 包，很多时候不需要单独安装完整 CUDA Toolkit。", "只有要编译 CUDA 扩展、TensorRT 或特定部署时，再安装 Toolkit。"],
+    install: ["驱动安装选择 Game Ready 或 Studio Driver 都可以，深度学习工作站更常用 Studio Driver。", "CUDA Toolkit 下载页选择 Windows -> x86_64 -> 对应 Windows 版本 -> exe local。", "安装 CUDA Toolkit 时新手用默认安装即可。", "cuDNN 按官方说明放置或通过框架依赖安装，不要随便复制 DLL 到系统目录。"],
+    verify: "nvidia-smi 能看到显卡；需要 Toolkit 时 nvcc --version 能输出版本。",
+  },
+  {
+    name: "Ultralytics YOLO",
+    choose: ["YOLO 建议单独环境，Python 3.10 是稳妥选择。", "先安装 PyTorch 并验证 GPU，再装 ultralytics。", "先跑官方 coco8 小数据集，不要直接上自己的大数据集。"],
+    install: ["conda create -n yolo python=3.10。", "conda activate yolo。", "按 PyTorch 官网命令安装 torch。", "pip install ultralytics。", "yolo checks。"],
+    verify: "yolo detect train data=coco8.yaml model=yolo11n.pt epochs=3 imgsz=640。",
+  },
+  {
+    name: "ONNX / TensorRT / OpenVINO",
+    choose: ["通用部署先选 ONNX + ONNX Runtime。", "NVIDIA GPU 高性能部署选 TensorRT。", "Intel CPU / iGPU / NPU 部署选 OpenVINO。", "不要一开始就同时装三套部署工具，先确定目标硬件。"],
+    install: ["ONNX：pip install onnx onnxruntime。", "TensorRT：按 NVIDIA 官方版本和 CUDA 对应关系安装。", "OpenVINO：优先按 OpenVINO 官方 pip 安装说明。", "YOLO 导出可用 yolo export model=xxx.pt format=onnx/openvino。"],
+    verify: "导出文件存在，并用目标后端跑一次真实推理。",
+  },
+];
+
 const troubles = [
   {
     title: "No module named xxx",
@@ -226,6 +295,7 @@ let searchTerm = "";
 
 const roadmapNode = document.querySelector("#roadmap");
 const tutorialGrid = document.querySelector("#tutorialGrid");
+const choiceGrid = document.querySelector("#choiceGrid");
 const downloadGrid = document.querySelector("#downloadGrid");
 const troubleList = document.querySelector("#troubleList");
 const troublePanel = document.querySelector("#troublePanel");
@@ -294,6 +364,28 @@ function renderDownloads() {
         <span>${desc}</span>
         <em>打开官网</em>
       </a>
+    `)
+    .join("");
+}
+
+function renderChoices() {
+  choiceGrid.innerHTML = installChoices
+    .map((item) => `
+      <article class="choice-card">
+        <h3>${item.name}</h3>
+        <div>
+          <h4>点开后选什么</h4>
+          <ul>${item.choose.map((line) => `<li>${line}</li>`).join("")}</ul>
+        </div>
+        <div>
+          <h4>安装时怎么勾</h4>
+          <ul>${item.install.map((line) => `<li>${line}</li>`).join("")}</ul>
+        </div>
+        <div>
+          <h4>验证</h4>
+          <code>${escapeHtml(item.verify)}</code>
+        </div>
+      </article>
     `)
     .join("");
 }
@@ -502,5 +594,6 @@ if (savedTheme) document.documentElement.dataset.theme = savedTheme;
 
 renderRoadmap();
 renderTutorials();
+renderChoices();
 renderDownloads();
 renderTroubles();
