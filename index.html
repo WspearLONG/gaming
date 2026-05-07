@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>游研档案 | 专业游戏攻略数据库</title>
+    <title>游研档案 | 游戏攻略数据库</title>
     <meta
       name="description"
-      content="游研档案是一个专业游戏攻略数据库，提供任务流程、Boss机制、装备配装、地图收集、版本更新与玩家速查工具。"
+      content="游研档案是一个精致的游戏攻略数据库，提供可互动地图、Boss机制、装备对比、开荒清单和完整攻略详情。"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -17,10 +17,11 @@
         <span>游研档案</span>
       </a>
       <nav class="nav" aria-label="主导航">
-        <a href="#guides">攻略库</a>
-        <a href="#database">资料库</a>
+        <a href="#guides">攻略</a>
+        <a href="#map">地图</a>
         <a href="#bosses">Boss</a>
-        <a href="#route">流程路线</a>
+        <a href="#gear">装备</a>
+        <a href="#planner">清单</a>
       </nav>
       <button class="theme-toggle" type="button" data-theme-toggle aria-label="切换明暗主题">
         <span class="sun"></span>
@@ -28,181 +29,126 @@
     </header>
 
     <main id="home">
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="eyebrow">V1.4.2 版本资料已更新 · 适配 PC / PS5 / Xbox</p>
-          <h1 id="hero-title">游戏攻略数据库</h1>
-          <p class="hero-lede">
-            面向正在游玩的玩家，集中整理主线流程、Boss机制、装备出处、地图收集和版本改动。
+      <section class="hero">
+        <img class="hero-bg" src="assets/hero-rpg-guide.png" alt="幻想动作 RPG 场景，远处有废墟要塞、路线标记和地图线索" />
+        <div class="hero-shade"></div>
+        <div class="hero-content">
+          <p class="eyebrow">V1.4.2 更新 · 可互动攻略数据库</p>
+          <h1>从路线到配装，一屏掌握关键打法</h1>
+          <p>
+            查 Boss 机制、点地图热点、对比装备收益、勾选开荒进度。这个版本不再只是文字说明，而是一个能实际使用的攻略站原型。
           </p>
-          <form class="search" role="search" aria-label="站内攻略搜索">
-            <input
-              id="searchInput"
-              type="search"
-              placeholder="搜索攻略、Boss、装备、地图、任务名称"
-              autocomplete="off"
-            />
+          <form class="search" role="search" aria-label="站内搜索">
+            <input id="searchInput" type="search" placeholder="搜索：灰烬骑士、赤纹长刃、雾林、支线任务" autocomplete="off" />
             <button type="submit">搜索</button>
           </form>
-          <div class="quick-stats" aria-label="站点统计">
-            <span><strong>128</strong> 篇攻略</span>
-            <span><strong>34</strong> 个 Boss</span>
-            <span><strong>217</strong> 件装备</span>
-            <span><strong>5月7日</strong> 更新</span>
+          <div class="hero-actions">
+            <a href="#guides">查看攻略</a>
+            <a href="#map">打开地图</a>
           </div>
         </div>
-        <aside class="live-panel" aria-label="最新更新">
-          <div class="panel-head">
-            <span>最新更新</span>
+        <aside class="patch-panel">
+          <div class="panel-title">
+            <span>最新补丁</span>
             <strong>V1.4.2</strong>
           </div>
           <ul>
-            <li>
-              <b>灰烬骑士</b>
-              <span>修正二阶段落雷追踪描述，加入低精力打法。</span>
-            </li>
-            <li>
-              <b>裂隙王城</b>
-              <span>新增钟楼双卫跳课路线和安全补给点。</span>
-            </li>
-            <li>
-              <b>赤刃处决流</b>
-              <span>根据削韧改动重排护符优先级。</span>
-            </li>
+            <li><b>灰烬骑士</b><span>二阶段落雷追踪已补充安全站位。</span></li>
+            <li><b>裂隙王城</b><span>新增钟楼双卫跳课路线。</span></li>
+            <li><b>赤刃流</b><span>削韧调整后重排护符优先级。</span></li>
           </ul>
         </aside>
       </section>
 
-      <section class="content-shell">
-        <aside class="sidebar" aria-label="速查导航">
-          <h2>速查</h2>
-          <a href="#guides">攻略筛选</a>
-          <a href="#database">资料库入口</a>
-          <a href="#bosses">Boss 机制</a>
-          <a href="#route">推荐路线</a>
-          <div class="notice">
-            <strong>编辑说明</strong>
-            <p>站内内容以当前补丁为准，过期攻略会标记版本号。</p>
+      <section class="stats" aria-label="站点统计">
+        <article><strong>128</strong><span>攻略条目</span></article>
+        <article><strong>34</strong><span>Boss 机制</span></article>
+        <article><strong>217</strong><span>装备数据</span></article>
+        <article><strong>86%</strong><span>地图收集覆盖</span></article>
+      </section>
+
+      <section class="section" id="guides">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Guide Library</p>
+            <h2>攻略库</h2>
           </div>
-        </aside>
-
-        <div class="main-column">
-          <section class="toolbar" id="guides" aria-label="攻略筛选">
-            <div>
-              <h2>攻略库</h2>
-              <p>按类型、阶段、预计阅读时间过滤，适合边玩边查。</p>
-            </div>
-            <div class="filters" role="group" aria-label="攻略类型筛选">
-              <button class="filter active" type="button" data-filter="all">全部</button>
-              <button class="filter" type="button" data-filter="开荒">开荒</button>
-              <button class="filter" type="button" data-filter="Boss">Boss</button>
-              <button class="filter" type="button" data-filter="装备">装备</button>
-              <button class="filter" type="button" data-filter="收集">收集</button>
-              <button class="filter" type="button" data-filter="任务">任务</button>
-            </div>
-          </section>
-
-          <section class="guide-grid" id="guideGrid" aria-live="polite"></section>
-
-          <section class="database" id="database">
-            <div class="section-heading">
-              <h2>资料库入口</h2>
-              <p>真实攻略站最常用的高频入口，按玩家目标组织。</p>
-            </div>
-            <div class="database-grid">
-              <article>
-                <span>武器</span>
-                <strong>217</strong>
-                <p>获取位置、强化素材、推荐流派</p>
-              </article>
-              <article>
-                <span>护符</span>
-                <strong>86</strong>
-                <p>效果叠加、冲突规则、掉落来源</p>
-              </article>
-              <article>
-                <span>地图</span>
-                <strong>14</strong>
-                <p>赐福点、隐藏门、素材路线</p>
-              </article>
-              <article>
-                <span>任务</span>
-                <strong>31</strong>
-                <p>分支条件、错过节点、结局影响</p>
-              </article>
-            </div>
-          </section>
-
-          <section class="detail-band" id="bosses">
-            <div class="section-heading">
-              <h2>Boss 机制速查</h2>
-              <p>保留触发条件、惩罚窗口、推荐应对和关键掉落。</p>
-            </div>
-            <div class="boss-layout">
-              <div class="boss-list" id="bossList" role="tablist" aria-label="Boss 列表"></div>
-              <article class="boss-panel" id="bossPanel"></article>
-            </div>
-          </section>
-
-          <section class="builds">
-            <div class="section-heading">
-              <h2>热门配装</h2>
-              <p>按玩法目标拆分，不把刷图、攻坚和竞速混在一起。</p>
-            </div>
-            <div class="build-grid">
-              <article class="build-card">
-                <span class="tag red">爆发</span>
-                <h3>赤刃处决流</h3>
-                <p>适合单体攻坚。依赖暴击、处决伤害和短冷却战技，成型后 Boss 战压血效率高。</p>
-                <ul>
-                  <li>主武器：赤纹长刃 +9</li>
-                  <li>护符：断誓徽记、猎首印</li>
-                  <li>推荐等级：75+</li>
-                </ul>
-              </article>
-              <article class="build-card">
-                <span class="tag blue">稳健</span>
-                <h3>寒潮反击流</h3>
-                <p>适合新手推进高压地图，用格挡反击和冰缓控制容错。</p>
-                <ul>
-                  <li>主武器：霜铸盾枪 +7</li>
-                  <li>护符：壁垒环、冰棘链</li>
-                  <li>推荐等级：58+</li>
-                </ul>
-              </article>
-            </div>
-          </section>
-
-          <section class="route" id="route">
-            <div class="section-heading">
-              <h2>推荐流程路线</h2>
-              <p>先拿关键能力，再打高压区域，减少卡关和无效跑图。</p>
-            </div>
-            <ol class="timeline">
-              <li>
-                <span>01</span>
-                <div>
-                  <h3>灰岸营地</h3>
-                  <p>解锁锻造台，购买火抗药，清东侧矿洞拿第一枚符文槽。</p>
-                </div>
-              </li>
-              <li>
-                <span>02</span>
-                <div>
-                  <h3>雾林古道</h3>
-                  <p>先走北线拿地图碎片，绕开巡逻精英，回头处理树心祭司。</p>
-                </div>
-              </li>
-              <li>
-                <span>03</span>
-                <div>
-                  <h3>裂隙王城</h3>
-                  <p>准备雷抗与打断手段，优先击败城门双卫获取中期武器。</p>
-                </div>
-              </li>
-            </ol>
-          </section>
+          <div class="filters" role="group" aria-label="攻略分类">
+            <button class="filter active" type="button" data-filter="all">全部</button>
+            <button class="filter" type="button" data-filter="开荒">开荒</button>
+            <button class="filter" type="button" data-filter="Boss">Boss</button>
+            <button class="filter" type="button" data-filter="装备">装备</button>
+            <button class="filter" type="button" data-filter="收集">收集</button>
+            <button class="filter" type="button" data-filter="任务">任务</button>
+          </div>
         </div>
+        <div class="guide-grid" id="guideGrid" aria-live="polite"></div>
+      </section>
+
+      <section class="section split" id="map">
+        <div class="section-copy">
+          <p class="eyebrow">Interactive Map</p>
+          <h2>可互动区域地图</h2>
+          <p>点击地图上的区域，右侧会展示推荐等级、关键掉落、隐藏收集和首要目标。</p>
+          <div class="map-detail" id="mapDetail"></div>
+        </div>
+        <div class="map-board" aria-label="互动地图">
+          <svg viewBox="0 0 760 520" role="img" aria-label="灰岸、雾林、裂隙王城和黑潮港地图">
+            <defs>
+              <linearGradient id="mapSea" x1="0" x2="1">
+                <stop stop-color="#2f7f86" />
+                <stop offset="1" stop-color="#174f63" />
+              </linearGradient>
+            </defs>
+            <rect width="760" height="520" rx="24" fill="url(#mapSea)" />
+            <path d="M86 268C80 162 175 75 296 96C374 110 386 168 465 159C565 147 671 215 655 337C640 450 528 467 439 423C363 386 304 452 214 427C134 405 91 350 86 268Z" fill="#d7c29d" />
+            <path d="M155 216C185 151 278 139 334 182C385 222 460 197 505 235C561 283 524 371 448 376C377 381 339 330 280 355C214 383 128 331 155 216Z" fill="#8fbf99" />
+            <path d="M438 164L593 224L610 309L512 345L430 295Z" fill="#8c8f83" />
+            <path d="M170 342L278 356L344 429L211 431Z" fill="#b88a56" />
+            <path d="M493 337L614 321L650 410L546 446Z" fill="#6d5662" />
+          </svg>
+          <button class="map-pin active" style="left: 25%; top: 42%" data-region="0">灰岸</button>
+          <button class="map-pin" style="left: 42%; top: 50%" data-region="1">雾林</button>
+          <button class="map-pin" style="left: 69%; top: 48%" data-region="2">王城</button>
+          <button class="map-pin" style="left: 75%; top: 74%" data-region="3">黑潮港</button>
+        </div>
+      </section>
+
+      <section class="section boss-section" id="bosses">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Boss Tactics</p>
+            <h2>Boss 机制拆解</h2>
+          </div>
+        </div>
+        <div class="boss-layout">
+          <div class="boss-list" id="bossList" role="tablist" aria-label="Boss 列表"></div>
+          <article class="boss-panel" id="bossPanel"></article>
+        </div>
+      </section>
+
+      <section class="section" id="gear">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Gear Compare</p>
+            <h2>装备对比</h2>
+          </div>
+          <p class="section-note">点击装备卡可以切换推荐状态。</p>
+        </div>
+        <div class="gear-grid" id="gearGrid"></div>
+      </section>
+
+      <section class="section split planner" id="planner">
+        <div class="section-copy">
+          <p class="eyebrow">Progress Planner</p>
+          <h2>开荒进度清单</h2>
+          <p>勾选状态会保存在当前浏览器里，适合边玩边记录。</p>
+          <div class="progress-meter" aria-label="开荒进度">
+            <span id="progressText">0 / 0</span>
+            <div><i id="progressBar"></i></div>
+          </div>
+        </div>
+        <div class="checklist" id="checklist"></div>
       </section>
     </main>
 
