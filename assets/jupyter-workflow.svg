@@ -1,0 +1,19 @@
+<svg width="920" height="560" viewBox="0 0 920 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="920" height="560" rx="26" fill="#EAF0F8"/>
+  <rect x="76" y="62" width="768" height="436" rx="18" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="4"/>
+  <rect x="76" y="62" width="768" height="64" rx="18" fill="#F97316"/>
+  <text x="112" y="103" font-family="Segoe UI, Arial" font-size="28" font-weight="700" fill="white">Jupyter Notebook</text>
+  <rect x="116" y="158" width="688" height="52" rx="8" fill="#F8FAFC" stroke="#D9E1EC" stroke-width="3"/>
+  <text x="140" y="192" font-family="Segoe UI, Arial" font-size="23" fill="#172033">Files</text>
+  <rect x="636" y="163" width="130" height="42" rx="8" fill="#2563EB"/>
+  <text x="681" y="191" font-family="Segoe UI, Arial" font-size="22" font-weight="700" fill="white">New</text>
+  <path d="M706 222V274" stroke="#B45309" stroke-width="8" stroke-linecap="round"/>
+  <path d="M685 254L706 275L727 254" stroke="#B45309" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="588" y="290" width="216" height="126" rx="10" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="3"/>
+  <text x="620" y="332" font-family="Segoe UI, Arial" font-size="22" fill="#172033">Python (py310)</text>
+  <text x="620" y="372" font-family="Segoe UI, Arial" font-size="22" fill="#172033">Terminal</text>
+  <rect x="118" y="248" width="420" height="170" rx="10" fill="#0F172A"/>
+  <text x="148" y="294" font-family="Consolas, monospace" font-size="22" fill="#A7F3D0">conda activate py310</text>
+  <text x="148" y="334" font-family="Consolas, monospace" font-size="22" fill="#A7F3D0">jupyter notebook</text>
+  <text x="148" y="374" font-family="Consolas, monospace" font-size="22" fill="#A7F3D0">选择 Python (py310)</text>
+</svg>

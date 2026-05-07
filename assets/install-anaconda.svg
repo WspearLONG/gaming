@@ -1,0 +1,22 @@
+<svg width="920" height="560" viewBox="0 0 920 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="920" height="560" rx="26" fill="#EAF0F8"/>
+  <rect x="70" y="58" width="780" height="444" rx="18" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="4"/>
+  <rect x="70" y="58" width="780" height="62" rx="18" fill="#2563EB"/>
+  <text x="104" y="98" font-family="Segoe UI, Arial" font-size="28" font-weight="700" fill="white">Anaconda / Miniconda Setup</text>
+  <rect x="114" y="158" width="300" height="220" rx="12" fill="#F8FAFC" stroke="#D9E1EC" stroke-width="3"/>
+  <circle cx="164" cy="212" r="22" fill="#10B981"/>
+  <circle cx="164" cy="278" r="22" fill="#F59E0B"/>
+  <circle cx="164" cy="344" r="22" fill="#EF4444"/>
+  <text x="206" y="222" font-family="Segoe UI, Arial" font-size="24" fill="#172033">选择 Just Me</text>
+  <text x="206" y="288" font-family="Segoe UI, Arial" font-size="24" fill="#172033">一路 Next</text>
+  <text x="206" y="354" font-family="Segoe UI, Arial" font-size="24" fill="#172033">不要乱勾 PATH</text>
+  <rect x="492" y="176" width="258" height="54" rx="10" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="3"/>
+  <text x="530" y="211" font-family="Segoe UI, Arial" font-size="24" fill="#172033">I Agree</text>
+  <rect x="492" y="258" width="258" height="54" rx="10" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="3"/>
+  <text x="530" y="293" font-family="Segoe UI, Arial" font-size="24" fill="#172033">Next</text>
+  <rect x="492" y="340" width="258" height="62" rx="10" fill="#2563EB"/>
+  <text x="530" y="379" font-family="Segoe UI, Arial" font-size="26" font-weight="700" fill="white">Install</text>
+  <path d="M770 371L828 371" stroke="#B45309" stroke-width="8" stroke-linecap="round"/>
+  <path d="M807 350L828 371L807 392" stroke="#B45309" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="562" y="454" font-family="Segoe UI, Arial" font-size="22" font-weight="700" fill="#B45309">最后点 Install</text>
+</svg>
