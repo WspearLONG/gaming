@@ -377,7 +377,7 @@ function visualBlock(itemStep) {
 function visualContent(itemStep) {
   const command = escapeHtml(itemStep.command || itemStep.title);
   if (itemStep.visual === "browser") {
-    return `<div class="address">https://official.example/download</div><div class="primary-button">${command}</div><div class="hint-arrow">点击这里</div>`;
+    return `<div class="address">${officialUrl(itemStep.command)}</div><div class="primary-button">${command}</div><div class="hint-arrow">点击这里</div>`;
   }
   if (itemStep.visual === "installer") {
     return `<div class="checkline">安装选项</div><div class="checkline muted">安装路径</div><div class="primary-button">${command}</div>`;
@@ -421,6 +421,20 @@ function visualTitle(type) {
     diagram: "环境关系图",
   };
   return titles[type] || "操作界面";
+}
+
+function officialUrl(label = "") {
+  const value = label.toLowerCase();
+  if (value.includes("anaconda") || value.includes("miniconda")) return "https://www.anaconda.com/download";
+  if (value.includes("vscode") || value.includes("vs code")) return "https://code.visualstudio.com/";
+  if (value.includes("pytorch")) return "https://pytorch.org/get-started/locally/";
+  if (value.includes("cuda")) return "https://developer.nvidia.com/cuda-downloads";
+  if (value.includes("tensorflow")) return "https://www.tensorflow.org/install";
+  if (value.includes("pycharm")) return "https://www.jetbrains.com/pycharm/download/";
+  if (value.includes("jupyter")) return "https://jupyter.org/install";
+  if (value.includes("openvino")) return "https://docs.openvino.ai/";
+  if (value.includes("ultralytics") || value.includes("yolo")) return "https://docs.ultralytics.com/quickstart/";
+  return "请从下方“官方下载入口”进入官网";
 }
 
 function escapeHtml(value) {
