@@ -493,6 +493,34 @@ code {
   font-size: 24px;
 }
 
+.official-shot {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.official-shot img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.official-shot figcaption {
+  padding: 9px 12px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.official-shot a {
+  color: var(--primary);
+  font-weight: 900;
+}
+
 .choice-shot {
   margin: 0;
   overflow: hidden;

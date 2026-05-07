@@ -373,6 +373,7 @@ function renderChoices() {
     .map((item) => `
       <article class="choice-card">
         <h3>${item.name}</h3>
+        ${officialScreenshot(item)}
         ${choiceShot(item)}
         <div>
           <h4>点开后选什么</h4>
@@ -389,6 +390,36 @@ function renderChoices() {
       </article>
     `)
     .join("");
+}
+
+function officialScreenshot(item) {
+  const data = screenshotFor(item.name);
+  if (!data) return "";
+  return `
+    <figure class="official-shot">
+      <img src="${data.src}" alt="${data.alt}" loading="lazy" />
+      <figcaption>官网当前页面截图 · 2026-05-07 · <a href="${data.url}" target="_blank" rel="noreferrer">打开来源</a></figcaption>
+    </figure>
+  `;
+}
+
+function screenshotFor(name) {
+  const map = [
+    ["Python 官方", "assets/official-screens/python-download.png", "Python 官方 Windows 下载页面截图", "https://www.python.org/downloads/windows/"],
+    ["Anaconda", "assets/official-screens/anaconda-download.png", "Anaconda 官方下载页面截图", "https://www.anaconda.com/download"],
+    ["Miniconda", "assets/official-screens/miniconda-docs.png", "Miniconda 官方文档页面截图", "https://docs.anaconda.com/miniconda/"],
+    ["VS Code", "assets/official-screens/vscode-python.png", "VS Code Python 官方教程页面截图", "https://code.visualstudio.com/docs/python/python-tutorial"],
+    ["PyCharm", "assets/official-screens/pycharm-interpreter.png", "PyCharm 官方解释器配置页面截图", "https://www.jetbrains.com/help/pycharm/configuring-python-interpreter.html"],
+    ["Jupyter", "assets/official-screens/jupyter-install.png", "Jupyter 官方安装页面截图", "https://jupyter.org/install"],
+    ["PyTorch", "assets/official-screens/pytorch-selector.png", "PyTorch Get Started 官方选择器页面截图", "https://pytorch.org/get-started/locally/"],
+    ["TensorFlow", "assets/official-screens/tensorflow-install.png", "TensorFlow 官方安装页面截图", "https://www.tensorflow.org/install"],
+    ["CUDA", "assets/official-screens/cuda-download.png", "NVIDIA CUDA Toolkit 官方页面截图", "https://developer.nvidia.com/cuda-toolkit"],
+    ["Ultralytics", "assets/official-screens/ultralytics-docs.png", "Ultralytics 官方文档页面截图", "https://docs.ultralytics.com/"],
+    ["ONNX", "assets/official-screens/openvino-docs.png", "OpenVINO 官方文档页面截图", "https://docs.openvino.ai/"],
+  ];
+  const found = map.find(([key]) => name.includes(key));
+  if (!found) return null;
+  return { src: found[1], alt: found[2], url: found[3] };
 }
 
 function choiceShot(item) {
