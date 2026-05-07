@@ -403,6 +403,29 @@ h1 {
   color: var(--muted);
 }
 
+.mini-visual {
+  display: grid;
+  gap: 10px;
+  min-height: 118px;
+  margin-top: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--primary) 12%, transparent), transparent),
+    var(--surface-2);
+}
+
+.mini-visual span {
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.mini-visual code {
+  align-self: end;
+}
+
 code {
   display: inline-block;
   max-width: 100%;
@@ -622,12 +645,194 @@ code {
   gap: 8px;
 }
 
+.step-list {
+  display: grid;
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.step-card {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.82fr) minmax(280px, 1fr);
+  gap: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+  background: color-mix(in srgb, var(--surface-2) 44%, var(--surface));
+}
+
+.step-copy {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 14px;
+  align-content: start;
+}
+
+.step-number {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 8px;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 900;
+}
+
+.step-copy h3 {
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+.step-copy p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.step-visual {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.step-visual figcaption {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.terminal-shot {
+  background: #0f172a;
+  color: #d1fae5;
+}
+
+.terminal-shot figcaption {
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #93c5fd;
+}
+
+.window-dots {
+  display: flex;
+  gap: 7px;
+  padding: 12px 14px 0;
+}
+
+.window-dots i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ef4444;
+}
+
+.window-dots i:nth-child(2) {
+  background: #f59e0b;
+}
+
+.window-dots i:nth-child(3) {
+  background: #22c55e;
+}
+
+.terminal-shot pre {
+  margin: 0;
+  padding: 16px;
+  overflow-x: auto;
+}
+
+.terminal-shot code {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: #d1fae5;
+  white-space: pre-wrap;
+}
+
+.fake-window {
+  min-height: 210px;
+  background: var(--surface);
+}
+
+.fake-title {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--primary) 10%, var(--surface));
+  font-weight: 900;
+}
+
+.fake-body {
+  display: grid;
+  gap: 14px;
+  min-height: 164px;
+  align-content: center;
+  padding: 18px;
+}
+
+.address,
+.search-box,
+.settings-main,
+.notebook-cell,
+.flow,
+.checkline,
+.settings-tree,
+.notebook-toolbar {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: color-mix(in srgb, var(--surface-2) 64%, var(--surface));
+}
+
+.primary-button {
+  width: fit-content;
+  border-radius: 8px;
+  padding: 10px 14px;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 900;
+}
+
+.hint-arrow {
+  width: fit-content;
+  color: var(--warning);
+  font-weight: 900;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.side-icons {
+  width: 42px;
+  height: 120px;
+  border-radius: 8px;
+  background: linear-gradient(var(--primary) 0 28px, transparent 28px 44px, var(--line) 44px 72px, transparent 72px 88px, var(--line) 88px);
+}
+
+.vscode .fake-body,
+.pycharm .fake-body {
+  grid-template-columns: 90px 1fr;
+  align-items: start;
+}
+
+.vscode .primary-button,
+.pycharm .primary-button {
+  grid-column: 2;
+}
+
+.jupyter .notebook-cell {
+  min-height: 74px;
+  font-family: "Cascadia Mono", Consolas, monospace;
+}
+
 @media (max-width: 1000px) {
   .hero,
   .visual-grid,
   .tutorial-grid,
   .download-grid,
-  .trouble-layout {
+  .trouble-layout,
+  .step-card {
     grid-template-columns: 1fr;
   }
 
